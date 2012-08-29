@@ -35,15 +35,7 @@ namespace Rainbow.Exceptional
             }
             catch (Exception e)
             {
-                if (_exceptions.ContainsKey(e.GetType()))
-                {
-                    var handler = _exceptions[e.GetType()];
-                    handler.Invoke();
-                }
-                else
-                {
-                    throw;
-                }
+               CheckHandlers(e);
             }
 
             return default(T);
@@ -57,15 +49,20 @@ namespace Rainbow.Exceptional
             }
             catch (Exception e)
             {
-                if (_exceptions.ContainsKey(e.GetType()))
-                {
-                    var handler = _exceptions[e.GetType()];
-                    handler.Invoke();
-                }
-                else
-                {
-                    throw;
-                }
+                CheckHandlers(e);
+            }
+        }
+
+        private void CheckHandlers(Exception e)
+        {
+            if (_exceptions.ContainsKey(e.GetType()))
+            {
+                var handler = _exceptions[e.GetType()];
+                handler.Invoke();
+            }
+            else
+            {
+                throw e;
             }
         }
     }

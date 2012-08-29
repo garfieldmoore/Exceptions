@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using Shouldly;
+using Rainbow.Exceptional;
 
 namespace exceptional.core.tests.acceptance
 {
