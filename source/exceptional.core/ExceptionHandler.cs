@@ -5,21 +5,21 @@ namespace Rainbow.Exceptional
 {
     public delegate void TestDelegate();
 
-    public class Exceptional : IOn
+    public class ExceptionHandler : IHandle
     {
         private readonly Dictionary<Type, Action> _exceptions;
 
-        internal Exceptional(Dictionary<Type, Action> exceptions)
+        internal ExceptionHandler(Dictionary<Type, Action> exceptions)
         {
             _exceptions = exceptions;
         }
 
-        public Exceptional()
+        public ExceptionHandler()
             : this(new Dictionary<Type, Action>())
         {
         }
 
-        public IOn On<T>(Action action)
+        public virtual IHandle On<T>(Action action)
         {
 
             _exceptions.Add(typeof(T), action);
@@ -27,14 +27,29 @@ namespace Rainbow.Exceptional
             return this;
         }
 
-        public IOn When<T>(T func)
+        public virtual T When<T>(Func<T> func)
         {
-            When(func);
+            try
+            {
+                 return func.Invoke();
+            }
+            catch (Exception e)
+            {
+                if (_exceptions.ContainsKey(e.GetType()))
+                {
+                    var handler = _exceptions[e.GetType()];
+                    handler.Invoke();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-            return this;
+            return default(T);
         }
 
-        public IOn When(Func<object> func)
+        public virtual void When(TestDelegate func)
         {
             try
             {
@@ -52,30 +67,6 @@ namespace Rainbow.Exceptional
                     throw;
                 }
             }
-
-            return this;
-        }
-
-        public IOn When(TestDelegate func)
-        {
-            try
-            {
-                func.Invoke();
-            }
-            catch (Exception e)
-            {
-                if (_exceptions.ContainsKey(e.GetType()))
-                {
-                    var handler = _exceptions[e.GetType()];
-                    handler.Invoke();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return this;
         }
     }
 }

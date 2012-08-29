@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using Shouldly;
 
 namespace exceptional.core.tests.acceptance
 {
@@ -12,23 +13,14 @@ namespace exceptional.core.tests.acceptance
             var repository = new Repository();
 
             repository.Configure().On<NotImplementedException>(() => { Console.WriteLine("Caught exception"); }).When(() => { throw new NotImplementedException(); });
-            
         }
 
         [Test]
-        public void Should_catch_exception_for_void_methods()
+        public void Returns_result_if_no_exception()
         {
             var repository = new Repository();
-
-            repository.Configure().On<NotImplementedException>(() => { Console.WriteLine("Caught exception"); }).When(() => repository.DoNothing());
+            int result = repository.Configure().On<Exception>(() => Console.WriteLine("caught")).When(() => 1 + 2);
+            result.ShouldBe(3);
         }
-
-        [Test]
-        public void When_return_result_if_no_exception()
-        {
-
-        }
-
-
     }
 }

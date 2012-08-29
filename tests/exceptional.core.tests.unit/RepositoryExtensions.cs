@@ -4,9 +4,9 @@ namespace exceptional.core.tests.acceptance
 {
     public static class RepositoryExtensions
     {
-        public static Exceptional Configure(this Repository repos)
+        public static ExceptionHandler Configure(this Repository repos)
         {
-            return new Exceptional();
+            return new ExceptionHandler();
         }
     }
 }

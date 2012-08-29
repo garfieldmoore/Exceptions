@@ -4,9 +4,10 @@ namespace exceptional.core.tests.acceptance
 {
     public class Repository
     {
-        public string Do()
+        public int Add(int x,int y)
         {
-            throw new Exception();
+
+            return x + y;
         }
 
         public void DoNothing()

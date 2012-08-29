@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
+using Rainbow.Exceptional;
 using Shouldly;
 
 namespace exceptional.core.tests.unit
@@ -13,7 +14,7 @@ namespace exceptional.core.tests.unit
         public void On_Exception_adds_exception_and_target_invocation()
         {
             var exceptions = new Dictionary<Type, Action>();
-            var exception = new Rainbow.Exceptional.Exceptional(exceptions);
+            var exception = new ExceptionHandler(exceptions);
             Action action = () => Console.WriteLine("caught");
 
             exception.On<Exception>(action);
@@ -27,7 +28,7 @@ namespace exceptional.core.tests.unit
         public void When_invokes_target()
         {
             var exceptions = new Dictionary<Type, Action>();
-            var exception = new Rainbow.Exceptional.Exceptional(exceptions);
+            var exception = new ExceptionHandler(exceptions);
             int invoke = 0;
             Action action = () => Console.WriteLine("caught");
 
@@ -39,7 +40,7 @@ namespace exceptional.core.tests.unit
         public void When_invokes_exception_handler_on_exception()
         {
             var exceptions = new Dictionary<Type, Action>();
-            var exception = new Rainbow.Exceptional.Exceptional(exceptions);
+            var exception = new Rainbow.Exceptional.ExceptionHandler(exceptions);
             int invoke = 0;
             Action action = () => invoke++;
 
@@ -52,7 +53,7 @@ namespace exceptional.core.tests.unit
         public void When_rethrows_if_no_handler()
         {
             var exceptions = new Dictionary<Type, Action>();
-            var exception = new Rainbow.Exceptional.Exceptional(exceptions);
+            var exception = new ExceptionHandler(exceptions);
             int invoke = 0;
             Action action = () => invoke++;
 
