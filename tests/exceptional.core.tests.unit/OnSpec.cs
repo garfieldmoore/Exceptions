@@ -58,7 +58,5 @@ namespace exceptional.core.tests.unit
 
             Assert.Throws<NotImplementedException>(() => exception.On<AbandonedMutexException>(action).When(() => { throw new NotImplementedException(); }));
         }
-
-        //public delegate void TestDelegate();
     }
 }

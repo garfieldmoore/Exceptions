@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace Rainbow.Exceptional
 {
+    public delegate void TestDelegate();
+
     public class Exceptional : IOn
     {
         private readonly Dictionary<Type, Action> _exceptions;
@@ -54,5 +56,26 @@ namespace Rainbow.Exceptional
             return this;
         }
 
+        public IOn When(TestDelegate func)
+        {
+            try
+            {
+                func.Invoke();
+            }
+            catch (Exception e)
+            {
+                if (_exceptions.ContainsKey(e.GetType()))
+                {
+                    var handler = _exceptions[e.GetType()];
+                    handler.Invoke();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return this;
+        }
     }
 }

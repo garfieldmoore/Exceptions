@@ -7,5 +7,8 @@ namespace Rainbow.Exceptional
         IOn On<T>(Action action);
         IOn When<T>(T func);
         IOn When(Func<object> func);
+        
+        IOn When(TestDelegate func);
+       
     }
 }
