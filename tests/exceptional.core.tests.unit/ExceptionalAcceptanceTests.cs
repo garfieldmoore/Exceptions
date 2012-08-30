@@ -1,18 +1,18 @@
 ﻿using System;
 using NUnit.Framework;
+using Rainbow.Exceptions;
 using Shouldly;
-using Rainbow.Exceptional;
+using exceptional.core.tests.unit;
 
 namespace exceptional.core.tests.acceptance
 {
     [TestFixture]
-    public class ExceptionalTests
+    public class ExceptionalAcceptanceTests
     {
         [Test]
         public void Should_catch_exception()
         {
             var repository = new Repository();
-
             repository.Configure().On<NotImplementedException>(() => { Console.WriteLine("Caught exception"); }).When(() => { throw new NotImplementedException(); });
         }
 

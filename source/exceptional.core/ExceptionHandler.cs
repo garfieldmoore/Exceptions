@@ -1,10 +1,13 @@
-using System;
-using System.Collections.Generic;
-
-namespace Rainbow.Exceptional
+namespace Rainbow.Exceptions
 {
+    using System;
+    using System.Collections.Generic;
+
     public delegate void TestDelegate();
 
+    /// <summary>
+    /// Allows exception handlers to be added
+    /// </summary>
     public class ExceptionHandler : IHandle
     {
         private readonly Dictionary<Type, Action> _exceptions;

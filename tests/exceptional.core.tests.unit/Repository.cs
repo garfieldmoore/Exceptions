@@ -2,6 +2,9 @@ using System;
 
 namespace exceptional.core.tests.acceptance
 {
+    /// <summary>
+    /// Test class
+    /// </summary>
     public class Repository
     {
         public int Add(int x,int y)

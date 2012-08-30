@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
-using Rainbow.Exceptional;
+using Rainbow.Exceptions;
 using Shouldly;
 
 namespace exceptional.core.tests.unit
@@ -40,7 +40,7 @@ namespace exceptional.core.tests.unit
         public void When_invokes_exception_handler_on_exception()
         {
             var exceptions = new Dictionary<Type, Action>();
-            var exception = new Rainbow.Exceptional.ExceptionHandler(exceptions);
+            var exception = new ExceptionHandler(exceptions);
             int invoke = 0;
             Action action = () => invoke++;
 
