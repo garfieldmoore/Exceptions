@@ -5,7 +5,7 @@ include REXML
 programFilesPath=""
 buildConfiguration = "release"
 productName="VantageEba"
-VsSolutionFile = "lattice.services.web.sln"
+VsSolutionFile = "exceptional.sln"
 workingDir=Dir.pwd
 packageDir = "buildArtifacts/bin"
 installersPath = "buildArtifacts/installers/Installer.zip"

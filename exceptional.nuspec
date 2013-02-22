@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>exceptional</id>
-    <version>1.0.0.1</version>
+    <version>1.0.0.2</version>
     <title>Rainbow Exceptional</title>
     <authors>RainbowSoft</authors>
     <owners>RainbowSoft</owners>
@@ -13,4 +13,9 @@
     <releaseNotes>Initial version.</releaseNotes>
     <copyright>Copyright 2012</copyright>
   </metadata>
+      <files>
+        <file src="buildArtifacts\bin\Components\Rainbow.Exceptional.dll" target="lib\net35\Rainbow.Exceptional.dll" />
+        <file src="buildArtifacts\bin\Components\Rainbow.Exceptional.dll" target="lib\net40\Rainbow.Exceptional.dll" />
+        <file src="buildArtifacts\bin\Components\Rainbow.Exceptional.dll" target="lib\net45\Rainbow.Exceptional.dll" />
+    </files>
 </package>
