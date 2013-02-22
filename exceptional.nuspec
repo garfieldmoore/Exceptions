@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>exceptional</id>
+    <version>1.0.0.1</version>
+    <title>Rainbow Exceptional</title>
+    <authors>RainbowSoft</authors>
+    <owners>RainbowSoft</owners>
+    <licenseUrl>https://github.com/garfieldmoore/Exceptions/blob/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/garfieldmoore/Exceptions</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Fluent exception handlers for .net</description>
+    <releaseNotes>Initial version.</releaseNotes>
+    <copyright>Copyright 2012</copyright>
+  </metadata>
+</package>
